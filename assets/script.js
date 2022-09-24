@@ -11,29 +11,25 @@ function displayTime() {
     timeDisplayEl.text(rightNow);
   }
 
-setInterval(displayTime, 1000);
+displayTime()
 
 
-
+//function colorBlock adds classes to text areas based of the relation to the current hour
 function colorBlock() {
     for(let h = 9, i = 0; h <18, i < textBoxEl.length; h++, i++){
-      console.log(h)
-      console.log(i)
       if (h < hour){
         textBoxEl[i].classList.add("past")
-        console.log(h)
-        console.log(i)
       } else if (h > hour){
         textBoxEl[i].classList.add("future")
-        console.log(h)
       } else if (h === hour){
         textBoxEl[i].classList.add("present")
-      }console.log(h)
+      }
     }
   }
 
 colorBlock()
 
+//adding event listners to each button and storing content from adjecent textbox to local storage
 document.getElementById("9Btn").onclick=function(e){
   e.preventDefault();
   nine = document.getElementById("9input").value
@@ -89,4 +85,17 @@ document.getElementById("17Btn").onclick=function(e){
 }
 
 
+//gets local storage information and stores it in appropriate text box
+function renderLastRegistered() {
+  document.getElementById("9input").value = localStorage.getItem("9am");
+  document.getElementById("10input").value = localStorage.getItem("10am");
+  document.getElementById("11input").value = localStorage.getItem("11am");
+  document.getElementById("12input").value = localStorage.getItem("12pm");
+  document.getElementById("13input").value = localStorage.getItem("1pm");
+  document.getElementById("14input").value = localStorage.getItem("2pm");
+  document.getElementById("15input").value = localStorage.getItem("3pm");
+  document.getElementById("16input").value = localStorage.getItem("4pm");
+  document.getElementById("17input").value = localStorage.getItem("5pm");
+}
 
+renderLastRegistered ()
